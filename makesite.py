@@ -209,17 +209,14 @@ def main():
     areas_layout = fread("layout/areas.html")
     area_layout = fread("layout/area.html")
     list_layout = fread("layout/list.html")
-    item_layout = fread("layout/item.html")
-    feed_xml = fread("layout/feed.xml")
-    item_xml = fread("layout/item.xml")
 
     longscroll_layout = fread("layout/longscroll.html")
 
-    # Combine layouts to form final layouts.
+    # Combine layouts with inheritance to form final layouts.
     post_layout = render(page_layout, content=post_layout)
     list_layout = render(page_layout, content=list_layout)
-    people_layout = render(page_layout, content=people_layout)
-    areas_layout = render(page_layout, content=areas_layout)
+    #people_layout = render(page_layout, content=people_layout)
+    #areas_layout = render(page_layout, content=areas_layout)
 
     longscroll_layout = render(page_layout, content=longscroll_layout)
 
