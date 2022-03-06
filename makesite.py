@@ -27,6 +27,7 @@
 """Make static website/blog with Python."""
 
 
+from importlib.resources import contents
 import os
 import shutil
 import re
@@ -165,6 +166,21 @@ def make_list(posts, dst, list_layout, item_layout, **params):
     log("Rendering list => {} ...", dst_path)
     fwrite(dst_path, output)
 
+def make_inset_list(posts, list_layout, item_layout, **params):
+    """Generate list page for a blog."""
+    items = []
+    for post in posts:
+        item_params = dict(params, **post)
+        item_params["summary"] = truncate(post["content"])
+        item = render(item_layout, **item_params)
+        items.append(item)
+
+    params["content"] = "".join(items)
+    #dst_path = render(dst, **params)
+    output = render(list_layout, **params)
+
+    return output
+
 
 def main():
     # Create a new _site directory from scratch.
@@ -197,33 +213,21 @@ def main():
     feed_xml = fread("layout/feed.xml")
     item_xml = fread("layout/item.xml")
 
+    longscroll_layout = fread("layout/longscroll.html")
+
     # Combine layouts to form final layouts.
     post_layout = render(page_layout, content=post_layout)
     list_layout = render(page_layout, content=list_layout)
     people_layout = render(page_layout, content=people_layout)
     areas_layout = render(page_layout, content=areas_layout)
 
+    longscroll_layout = render(page_layout, content=longscroll_layout)
+
     # Create site pages.
-    make_pages("content/_index.html", "_site/index.html", page_layout, **params)
     make_pages(
         "content/[!_]*.html", "_site/{{ slug }}/index.html", page_layout, **params
     )
 
-    # Create blogs.
-    blog_posts = make_pages(
-        "content/blog/*.md",
-        "_site/blog/{{ slug }}/index.html",
-        post_layout,
-        blog="blog",
-        **params
-    )
-    news_posts = make_pages(
-        "content/news/*.html",
-        "_site/news/{{ slug }}/index.html",
-        post_layout,
-        blog="news",
-        **params
-    )
     # This might not be necessary because we are not doing individual pages per person
     people = make_pages(
         "content/people/*.md",
@@ -238,63 +242,15 @@ def main():
         **params
     )
 
-    # Create blog list pages.
-    make_list(
-        blog_posts,
-        "_site/blog/index.html",
-        list_layout,
-        item_layout,
-        blog="blog",
-        title="Blog",
-        **params
-    )
-    make_list(
-        news_posts,
-        "_site/news/index.html",
-        list_layout,
-        item_layout,
-        blog="news",
-        title="News",
-        **params
-    )
-    make_list(
-        people,
-        "_site/people/index.html",
-        people_layout,
-        person_layout,
-        blog="people",
-        title="People",
-        **params
-    )
-    make_list(
-        research,
-        "_site/research/index.html",
-        areas_layout,
-        area_layout,
-        blog="areas",
-        title="Research",
-        **params
-    )
+    people_list = make_inset_list(people, people_layout, person_layout, **params)
+    research_list = make_inset_list(research, areas_layout, area_layout, **params)
 
-    # Create RSS feeds.
-    make_list(
-        blog_posts,
-        "_site/blog/rss.xml",
-        feed_xml,
-        item_xml,
-        blog="blog",
-        title="Blog",
-        **params
-    )
-    make_list(
-        news_posts,
-        "_site/news/rss.xml",
-        feed_xml,
-        item_xml,
-        blog="news",
-        title="News",
-        **params
-    )
+    # main_path = render("_site/index.html", **params)
+    # main_output = render(longscroll_layout, people=people_list, research=research_list, **params)
+    # log("Rendering list => {} ...", main_path)
+    # fwrite(main_path, main_output)
+
+    make_pages("content/main.md", "_site/index.html", longscroll_layout, people=people_list, research=research_list, **params)
 
 
 # Test parameter to be set temporarily by unit tests.
