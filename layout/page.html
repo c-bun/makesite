@@ -1,44 +1,115 @@
-<!DOCTYPE html>
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
 <html>
+
 <head>
-    <title>{{ title }} - {{ subtitle }}</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="{{ base_path }}/css/style.css">
+    <title>{{ title }} | {{ subtitle }}</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!--light box-->
+    <script src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/jquery.lightbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen">
+    <script type="text/javascript">
+        $(function () {
+            $('.gallery a').lightBox();
+        });
+    </script>
+    <script type="text/javascript" src="js/move-top.js"></script>
+    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1200);
+            });
+        });
+    </script>
 </head>
 
-<body id="{{ slug }}">
+<body>
+    <div class="header">
+        <div class="header-top">
+            <div class="wrap">
+                <div class="logo">
+                    <!--<a href="index.html"><img src="images/logo.png" alt=""/></a>-->
+                    <h1><a href="index.html">Rathbun Lab</a></h1>
+                </div>
+                <div class="cssmenu">
+                    <ul id="nav">
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#people">People</a></li>
+                        <li><a href="#apply">Apply</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main" id="container">
+        {{ content }}
+    </div>
+    <div class="footer section" id="section-4">
+        <div class="footer-bottom">
+            <div class="wrap">
+                <div class="copy">
+                    <p class="copy">© 2013 Designed by <a href="http://w3layouts.com" target="_blank">w3layouts</a> </p>
+                </div>
+                <div class="social-footer">
+                    <ul>
+                        <li class="facebook"><a href="#"><span> </span></a></li>
+                        <li class="google"><a href="#"><span> </span></a></li>
+                        <li class="twitter"><a href="#"><span> </span></a></li>
+                        <li class="rss"><a href="#"><span> </span></a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
 
-<nav>
-<section>
-    <span class="home">
-        <a href="{{ base_path }}/">Home</a>
-    </span>
-    <span class="links">
-        <a href="{{ base_path }}/blog/">Blog</a>
-        <a href="{{ base_path }}/news/">News</a>
-        <a href="{{ base_path }}/research/">Research</a>
-        <a href="{{ base_path }}/people/">People</a>
-        <a href="{{ base_path }}/contact/">Contact</a>
-        <a href="{{ base_path }}/about/">About</a>
-    </span>
-</section>
-</nav>
+                        var defaults = {
+                            containerID: 'toTop', // fading element id
+                            containerHoverID: 'toTopHover', // fading element hover id
+                            scrollSpeed: 1200,
+                            easingType: 'linear'
+                        };
 
-<main>
-{{ content }}
-</main>
 
-<footer>
-<section>
-<p>&copy; {{ current_year }} Lorem Ipsum</p>
-<p>
-    <a href="https://twitter.com/sunainapai">Twitter</a>
-    <a href="https://github.com/sunainapai">GitHub</a>
-    <a href="https://www.example.com/">Example</a>
-</p>
-</section>
-</footer>
+                        $().UItoTop({
+                            easingType: 'easeOutQuart'
+                        });
 
+                    });
+                </script>
+                <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+            </div>
+        </div>
+        <script src="js/jquery.scrollTo.js"></script>
+        <script src="js/jquery.nav.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#nav').onePageNav({
+                    begin: function () {
+                        console.log('start')
+                    },
+                    end: function () {
+                        console.log('stop')
+                    }
+                });
+            });
+        </script>
+    </div>
 </body>
+
 </html>

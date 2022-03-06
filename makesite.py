@@ -210,6 +210,7 @@ def main():
     area_layout = fread("layout/area.html")
     list_layout = fread("layout/list.html")
 
+    apply_layout = fread("layout/apply.html")
     longscroll_layout = fread("layout/longscroll.html")
 
     # Combine layouts with inheritance to form final layouts.
@@ -247,7 +248,7 @@ def main():
     # log("Rendering list => {} ...", main_path)
     # fwrite(main_path, main_output)
 
-    make_pages("content/main.md", "_site/index.html", longscroll_layout, people=people_list, research=research_list, **params)
+    make_pages("content/main.md", "_site/index.html", longscroll_layout, people=people_list, research=research_list, apply=apply_layout, **params)
 
 
 # Test parameter to be set temporarily by unit tests.

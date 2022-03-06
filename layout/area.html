@@ -1,10 +1,15 @@
-<article>
-<h2>{{ title }}</h2>
-<img src="{{ base_path }}/img/{{ image }}">
-<p class="summary">
-{{ content }}
-</p>
-<div>
-<a class="more" href="">Social Medias Here?</a>
+<div class="col_1_of_3 span_1_of_3">
+    <img src="img/{{ image }}" alt="" />
+    <div class="desc">
+        <h4><a href="#">{{ title }}</a></h4>
+        <p>{{ content }}</p>
+        <div class="social-icons">
+            <ul>
+                <li class="facebook"><a href="#"><span> </span></a></li>
+                <li class="twitter"><a href="#"><span> </span></a></li>
+                <li class="google"><a href="#"><span> </span></a></li>
+                <li class="rss"><a href="#"><span> </span></a></li>
+            </ul>
+        </div>
+    </div>
 </div>
-</article>
