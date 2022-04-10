@@ -596,7 +596,7 @@ li.rss a span:hover{
 	resize:none;
 	height:120px;		
 }
-.btn {
+/* .btn {
 	border: none;
 	font-size: inherit;
 	color: inherit;
@@ -604,7 +604,7 @@ li.rss a span:hover{
 	cursor: pointer;
 	padding: 20px 75px;
 	display: inline-block;
-	color:#fff;
+	color:rgb(122, 122, 122);
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	outline: none;
@@ -613,7 +613,7 @@ li.rss a span:hover{
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 	font-family: 'Open Sans', sans-serif;
-}
+} */
 .btn-8 {
 	display: block;
 	background: #017E80;
