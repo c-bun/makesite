@@ -399,17 +399,6 @@ body{
 		position: relative !important;
 		cursor:pointer;
 	}
-	.portfolio img, .portfolio1 img {
-		max-width:100%;
-		display: block;
-		opacity: 5;
-		transition: all 300ms!important;
-		-webkit-transition: all 300ms!important;
-		-moz-transition: all 300ms!important;
-	}
-	.portfolio img:hover, .portfolio1 img:hover {
-		-webkit-filter: grayscale(50%);
-	}
 	.portfolio .label, .portfolio1 .label {
 		position: absolute;
 		width: 100%;
