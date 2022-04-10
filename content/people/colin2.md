@@ -4,6 +4,8 @@
 
 How can a racoon conduct surgeries? This should have a linkedin link!!
 
+[Greg's LinkedIn](https://www.linkedin.com)
+
 <div class="position-relative">
             <div class="position-absolute start-50 translate-middle">
                     <a href="{{ linkedin }}" class="link-secondary"><i class="fa-brands fa-linkedin fa-xl"></i> LinkedIn</a>

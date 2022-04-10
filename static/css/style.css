@@ -45,7 +45,7 @@ body{
 	z-index:9999;
 	width: 100%;
 	clear: both;
-	background:#303441;
+	background: rgb(14, 11, 41);
 	border-bottom:7px solid #383B4B;
 }
 .logo{
@@ -135,7 +135,7 @@ body{
 }
 /*--content--*/
 .content-top{
-	background:#f2f2f2;
+	background: rgb(250, 251, 254);
 	padding:7% 0;
 	border-bottom: 7px solid #FFF;
 }
@@ -274,7 +274,7 @@ body{
 }
 .content-middle{
 	padding:7% 0;
-	background:#303441;
+	background: rgb(60, 136, 240);
 	border-bottom: 7px solid #383B4B;
 }
 .content-middle h2 {
